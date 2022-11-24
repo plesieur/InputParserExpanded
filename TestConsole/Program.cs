@@ -78,7 +78,7 @@ namespace TestConsole
             rooms.Add(new Room()
             {
                 Name = "Central Hall",
-                Description = "Main room of this test house.",
+                Description = "Main room of this test house.\nThere are exits to the North, South, East and West.",
                 Items = new List<string> { },
                 Dir = new int[6] { 1, 2, 3, 4, -1, -1 }
             });
@@ -86,7 +86,7 @@ namespace TestConsole
             rooms.Add(new Room()
             {
                 Name = "North Room",
-                Description = "North chamber of the house.",
+                Description = "North chamber of the house.\nThere is one exit to the south.",
                 Items = new List<string> { "Gold Key" },
                 Dir = new int[6] { -1, -1, 0, -1, -1, -1 }
             });
@@ -94,7 +94,7 @@ namespace TestConsole
             rooms.Add(new Room()
             {
                 Name = "East Room",
-                Description = "East chamber of the house. The is a laddr going up and a staircase goig down.",
+                Description = "East chamber of the house. \nThere is a ladder going up and a staircase going down.\nThere is another exit to the West.",
                 Items = new List<string> { },
                 Dir = new int[6] { -1, -1, -1, 0, 5, 6 }
             });
@@ -102,7 +102,7 @@ namespace TestConsole
             rooms.Add(new Room()
             {
                 Name = "South Room",
-                Description = "South chamber of the house. There is a Blue Door to the west and a Green Door to the east.",
+                Description = "South chamber of the house. \nThere is a Blue Door to the west and a Green Door to the east.\nThere is an exit to the North.",
                 Items = new List<string> { "Blue Door", "Green Door" },
                 Dir = new int[6] { 0, -1, -1, -1, -1, -1 }
             });
@@ -110,15 +110,15 @@ namespace TestConsole
             rooms.Add(new Room()
             {
                 Name = "West Room",
-                Description = "West chamber of the house",
+                Description = "West chamber of the house'\nThere is an exit to the East.",
                 Items = new List<string> { "Skeleton Key" },
                 Dir = new int[6] { -1, 0, -1, -1, -1, -1 }
             });
 
             rooms.Add(new Room()
             {
-                Name = "Attack",
-                Description = "Attack of the house.  The roof is very low and you must stoop to walk through it.",
+                Name = "Attic",
+                Description = "Attic of the house.  \nThe roof is very low and you must stoop to walk through it.\nThere is a ladder going down.",
                 Items = new List<string> {  },
                 Dir = new int[6] { -1, -1, -1, -1, -1, 2 }
             });
@@ -126,7 +126,7 @@ namespace TestConsole
             rooms.Add(new Room()
             {
                 Name = "Cellar",
-                Description = "The cellar of the house.  There are empty wine racks along the walls.",
+                Description = "The cellar of the house.  \nThere are empty wine racks along the walls.\nThere is a staircase going up.",
                 Items = new List<string> { },
                 Dir = new int[6] { -1, -1, -1, -1, 0, -1 }
             });

@@ -27,6 +27,23 @@ namespace TestConsole
         public int Down() { return _dir[5]; }
     }
 */
+    public enum itemType { CARRYABLE, OPENABLE, LOCKABLE};
+    public enum openState { OPEN, CLOSED};
+
+    public enum lockState { UNLOCKED, LOCKED};
+    public class ItemsDef
+    {
+   
+        private string _item;
+        private itemType _type;
+        private openState _open;
+        private lockState _locked;
+
+        public string Item { get; set; }
+        public itemType Type { get; set; }
+        public openState Open { get; set; }
+        public lockState Locked { get; set; }
+    }
     public class Room
     {
         private string _name;

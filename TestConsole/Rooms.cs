@@ -86,7 +86,13 @@ namespace TestConsole
             List<string> directions = new List<string>() { "NORTH", "EAST", "SOUTH", "WEST", "UP", "DOWN" };
 
             int dir = directions.IndexOf(direction);
-            location = this.Dir[dir];
+            if (this.Dir[dir] != -1)
+            {
+                location = this.Dir[dir];
+            } else
+            {
+                Console.WriteLine("I don't know how to go that way!\n");
+            }
         }
 
     }

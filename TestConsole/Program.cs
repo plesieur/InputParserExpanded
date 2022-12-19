@@ -128,7 +128,7 @@ namespace TestConsole
                 Name = "Cellar",
                 Description = "The cellar of the house.  \nThere are empty wine racks along the walls.\nThere is a staircase going up.",
                 Items = new List<string> { },
-                Dir = new int[6] { -1, -1, -1, -1, 0, -1 }
+                Dir = new int[6] { -1, -1, -1, -1, 2, -1 }
             });
 
             return rooms;

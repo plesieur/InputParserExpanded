@@ -11,7 +11,6 @@ namespace TestConsole
         private string _name;
         private string _description;
         private List<string> _items = new List<string>();
-        //        private Direction _travel;
         private int[] _direction;
 
         public string Name { get { return _name; } set { _name = value; } }
@@ -47,6 +46,21 @@ namespace TestConsole
             {
                 Console.WriteLine("I don't know how to go that way!\n");
             }
+        }
+
+        public void take(string item, Player player1)
+        {
+
+            if (this.Items.Contains(item))
+            {
+                player1.Inventory.Add(item);
+                this.Items.Remove(item);
+                Console.WriteLine("You have taken {0}", item);
+            } else
+            {
+                Console.WriteLine("I don't see the {0}", item);
+            }
+
         }
 
     }

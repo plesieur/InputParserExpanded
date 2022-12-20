@@ -12,18 +12,18 @@ namespace TestConsole
     internal class Program
     {
 
-        const bool debug = true;
-        const int maxInventory = 5;
+        const bool DEBUG = true;
+        const int MAX_INVENTORY = 5;
         private static void Main()
         {
 
             var parser = CreateParser();
             var scene = CreateRooms();
             int roomIndex = 0;
-            Room currenrRoom = scene[0];
             Sentence results;
-            List<string>inventory = new List<string>();
+            Player player1 = new Player();
 
+            player1.CurrentRoom = scene[0];
 
             lookCmd(scene[roomIndex]);
             do
@@ -34,7 +34,7 @@ namespace TestConsole
                 if (string.IsNullOrWhiteSpace(input))
                     return;
                 results = parser.Parse(input);
-                executeCommand(results, parser, ref roomIndex, scene, inventory);
+                executeCommand(results, parser, ref roomIndex, scene, player1);
             } while (true);
         }
 
@@ -133,12 +133,10 @@ namespace TestConsole
 
             return rooms;
         }
-        private static void executeCommand(Sentence results, Parser parser, ref int roomIndex, List<Room> scene, List<string>inventory)
+        private static void executeCommand(Sentence results, Parser parser, ref int roomIndex, List<Room> scene, Player player1)
         {
-            Room currentRoom;
-            currentRoom = scene[roomIndex];
 
-            if (debug)
+            if (DEBUG)
             {
                 Console.WriteLine(results);   //print debug info about parsed sentence
             }
@@ -161,28 +159,28 @@ namespace TestConsole
                         System.Environment.Exit(0);
                         break;
                     case "GO":
-                        currentRoom.movement(results.Word4.Value,ref roomIndex);
-                        currentRoom = scene[roomIndex];
+                        player1.CurrentRoom.movement(results.Word4.Value,ref roomIndex);
+                        player1.CurrentRoom = scene[roomIndex];
                         lookCmd(scene[roomIndex]);
                         break;
                     case "LOOK":
                         lookCmd(scene[roomIndex]);
                         break;
                     case "INVENTORY":
-                        if (inventory.Count == 0)
+                        if (player1.Inventory.Count == 0)
                         {
                             Console.WriteLine("You are not carrying anything");
                         } else
                         {
                             Console.WriteLine("You are carrying");
-                            foreach(string item in inventory)
+                            foreach(string item in player1.Inventory)
                             {
                                 Console.WriteLine("  {0}", item);
                             }
                         }
                         break;
                     case "TAKE":
-                        if (inventory.Count == maxInventory)
+                        if (player1.Inventory.Count == MAX_INVENTORY)
                         {
                             Console.WriteLine("You cannot carry any more items");
                             Console.WriteLine("Drop an item first");
@@ -191,6 +189,7 @@ namespace TestConsole
                             string noun = (results.Word4.Value).ToLower();
                             string adjective = (results.Word4.PrecedingAdjective.Value).ToLower();
                             string item;
+
                             if (adjective != null)
                             {
                                 item = adjective + " " + noun;
@@ -198,11 +197,7 @@ namespace TestConsole
                             {
                                 item = noun;
                             }
-
-                            Console.WriteLine("You have taken {0}", item);
-                            inventory.Add(item);
-                            scene[roomIndex].Items.Remove(item);
-                            
+                            player1.CurrentRoom.take(item, player1);
                         }
                         break;
                     default:

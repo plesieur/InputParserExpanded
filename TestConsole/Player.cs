@@ -9,15 +9,19 @@ namespace TestConsole
 {
     public class Player
     {
-        private Room _currentRoom;
+        private static Room _currentRoom;
         private List<string> _inventory;
-
-        public Player()
+        private static int _roomIndex;
+        public Player(int startRoom)
         {
-            _currentRoom = new Room();
+            _roomIndex = startRoom;
             _inventory = new List<string>();
+            _currentRoom = Environment.Scene[_roomIndex];
         }
-        public Room CurrentRoom { get { return _currentRoom; } set { _currentRoom = value; } }
+        public static Room CurrentRoom { get { return _currentRoom; } set { _currentRoom = value; } }
         public List<string> Inventory { get { return _inventory; } }
+
+        public static int RoomIndex { get { return _roomIndex; } set { _roomIndex = value; } }
+
     }
 }

@@ -158,7 +158,7 @@ namespace TestConsole
             {
                 Name = "Attic",
                 Description = "Attic of the house.  \nThe roof is very low and you must stoop to walk through it.\nThere is a ladder going down.",
-                Items = new List<string> { },
+                Items = new List<string> { "Chest" },
                 Dir = new int[6] { -1, -1, -1, -1, -1, 2 }
             });
 

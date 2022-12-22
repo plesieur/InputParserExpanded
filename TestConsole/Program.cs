@@ -126,7 +126,8 @@ namespace TestConsole
                             Console.WriteLine("Drop an item first");
                         } else
                         {
-                            string item = parseItem((results.Word4.Value).ToLower(), (results.Word4.PrecedingAdjective.Value).ToLower());
+                            string item = parseItem((results.Word4.Value).ToLower(),
+                                results.Word4.PrecedingAdjective == null ? null : (results.Word4.PrecedingAdjective.Value).ToLower());
                             Player.CurrentRoom.take(item, player1);
                         }
                         break;
@@ -137,7 +138,8 @@ namespace TestConsole
                         }
                         else
                         {
-                            string item = parseItem((results.Word4.Value).ToLower(), (results.Word4.PrecedingAdjective.Value).ToLower());
+                            string item = parseItem((results.Word4.Value).ToLower(), 
+                                results.Word4.PrecedingAdjective == null ? null : (results.Word4.PrecedingAdjective.Value).ToLower());
                             Player.CurrentRoom.drop(item, player1);
                         }
                         break;

@@ -65,6 +65,23 @@ namespace TestConsole
             }
 
         }
+
+        public void drop(string item, Player player1)
+        {
+
+            if (player1.Inventory.Contains(item))
+            {
+                player1.Inventory.Remove(item);
+                this.Items.Add(item);
+                Console.WriteLine("You have dropped the {0}", item);
+            }
+            else
+            {
+                Console.WriteLine("I don't have the {0}", item);
+            }
+
+        }
+
     }
 
     public class Environment {

@@ -25,7 +25,7 @@ namespace TestConsole
             Player player1 = new Player(0);
 
 
-
+            Console.WriteLine("Type 'help' or '?' for a list of commands\n");
             lookCmd(scene.CurrentRoom());
             do
             {
@@ -138,6 +138,28 @@ namespace TestConsole
                                 item = noun;
                             }
                             Player.CurrentRoom.take(item, player1);
+                        }
+                        break;
+                    case "DROP":
+                        if (player1.Inventory.Count == MAX_INVENTORY)
+                        {
+                            Console.WriteLine("You don't have any items to drop");
+                        }
+                        else
+                        {
+                            string noun = (results.Word4.Value).ToLower();
+                            string adjective = (results.Word4.PrecedingAdjective.Value).ToLower();
+                            string item;
+
+                            if (adjective != null)
+                            {
+                                item = adjective + " " + noun;
+                            }
+                            else
+                            {
+                                item = noun;
+                            }
+                            Player.CurrentRoom.drop(item, player1);
                         }
                         break;
                     default:

@@ -77,7 +77,7 @@ namespace TestConsole
             }
             else
             {
-                Console.WriteLine("I don't have the {0}", item);
+                Console.WriteLine("You don't have the {0}", item);
             }
 
         }

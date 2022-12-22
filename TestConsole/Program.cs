@@ -126,39 +126,18 @@ namespace TestConsole
                             Console.WriteLine("Drop an item first");
                         } else
                         {
-                            string noun = (results.Word4.Value).ToLower();
-                            string adjective = (results.Word4.PrecedingAdjective.Value).ToLower();
-                            string item;
-
-                            if (adjective != null)
-                            {
-                                item = adjective + " " + noun;
-                            } else
-                            {
-                                item = noun;
-                            }
+                            string item = parseItem((results.Word4.Value).ToLower(), (results.Word4.PrecedingAdjective.Value).ToLower());
                             Player.CurrentRoom.take(item, player1);
                         }
                         break;
                     case "DROP":
-                        if (player1.Inventory.Count == MAX_INVENTORY)
+                        if (player1.Inventory.Count == 0)
                         {
                             Console.WriteLine("You don't have any items to drop");
                         }
                         else
                         {
-                            string noun = (results.Word4.Value).ToLower();
-                            string adjective = (results.Word4.PrecedingAdjective.Value).ToLower();
-                            string item;
-
-                            if (adjective != null)
-                            {
-                                item = adjective + " " + noun;
-                            }
-                            else
-                            {
-                                item = noun;
-                            }
+                            string item = parseItem((results.Word4.Value).ToLower(), (results.Word4.PrecedingAdjective.Value).ToLower());
                             Player.CurrentRoom.drop(item, player1);
                         }
                         break;
@@ -168,6 +147,20 @@ namespace TestConsole
                 }
             }
 
+        }
+
+        static string parseItem (string noun, string adjective) {
+            string item;
+
+            if (adjective != null)
+            {
+                item = adjective + " " + noun;
+            }
+            else
+            {
+                item = noun;
+            }
+            return item;
         }
 
         private static void lookCmd(Room room)

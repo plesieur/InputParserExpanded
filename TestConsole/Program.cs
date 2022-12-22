@@ -26,7 +26,7 @@ namespace TestConsole
 
 
             Console.WriteLine("Type 'help' or '?' for a list of commands\n");
-            lookCmd(scene.CurrentRoom());
+            scene.CurrentRoom().lookCmd();
             do
             {
                 Console.Write("\nParse what?> ");
@@ -101,10 +101,10 @@ namespace TestConsole
                         break;
                     case "GO":
                         Player.CurrentRoom.movement(results.Word4.Value, player1);
-                        lookCmd(scene.CurrentRoom());
+                        scene.CurrentRoom().lookCmd();
                         break;
                     case "LOOK":
-                        lookCmd(scene.CurrentRoom());
+                        scene.CurrentRoom().lookCmd();
                         break;
                     case "INVENTORY":
                         if (player1.Inventory.Count == 0)
@@ -163,16 +163,6 @@ namespace TestConsole
             return item;
         }
 
-        private static void lookCmd(Room room)
-        {
-            Console.WriteLine("You are in the {0}", room.Name);
-            Console.WriteLine(room.Description);
-            if (room.Items.Count > 0)
-            {
-                Console.WriteLine("You see");
-                foreach (string item in room.Items) { Console.WriteLine("  {0}", item); }
-            }
-        }
 
 
     }

@@ -82,6 +82,18 @@ namespace TestConsole
 
         }
 
+        public void lookCmd()
+        {
+            Console.WriteLine("You are in the {0}", _name);
+            Console.WriteLine(_description);
+            if (_items.Count > 0)
+            {
+                Console.WriteLine("You see");
+                foreach (string item in _items) { Console.WriteLine("  {0}", item); }
+            }
+        }
+
+
     }
 
     public class Environment {

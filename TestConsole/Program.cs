@@ -68,6 +68,7 @@ namespace TestConsole
             parser.Aliases.Add("INVENTORY", "I", "INV");
             parser.Aliases.Add("HELP", "H", "?");
             parser.Aliases.Add("QUIT", "Q", "EXIT");
+            parser.Aliases.Add("TAKE", "GRAB", "PICK");
 
             return parser;
         }
